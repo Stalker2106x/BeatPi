@@ -1,0 +1,6 @@
+[submodule "thirdparty/wiringpi"]
+	path = thirdparty/wiringpi
+	url = git://git.drogon.net/wiringPi
+[submodule "thirdparty/libcurl"]
+	path = thirdparty/libcurl
+	url = https://github.com/curl/curl.git
