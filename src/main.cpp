@@ -1,4 +1,4 @@
-#include "wiringpi\wiringPi\wiringPi.h"
+#include "wiringpi/wiringPi/wiringPi.h"
 
 int main(int argc, char **argv)
 {

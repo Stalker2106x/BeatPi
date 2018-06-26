@@ -1,6 +1,6 @@
 CC = g++
 
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -Ithirdparty -Iinclude
 
 TARGET = beatpi
 
@@ -8,7 +8,8 @@ LIBS = -lwiringPi
 
 SRCDIR = src
 
-SRCS =	$(SRCDIR)/main.cpp
+SRCS =	$(SRCDIR)/main.cpp		\
+	$(SRCDIR)/Controller.cpp	
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,8 +1,8 @@
-#ifndef PINCONFIG_HH_
-#define PINCONFIG_HH_
+#ifndef CONTROLLER_HH_
+#define CONTROLLER_HH_
 
 #include <vector>
-#include <pair>
+#include <utility>
 #include "pinconfig.hh"
 
 class Controller
@@ -13,10 +13,15 @@ public:
     
     void pollEvent();
 
-    typedef void (*callback_t)();
+    void changeVolume(int keyCode);
+    void prevNext(int keyCode);
+    void togglePlayback(int keyCode);
+
+  //Generic controller callback
+  typedef void (Controller::*callback_t)(int);
 
 private:
     std::vector<std::pair<int, callback_t>> _buttons;
 };
 
-#endif /* !PINCONFIG_HH_ */
+#endif /* !CONTROLLER_HH_ */
