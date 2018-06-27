@@ -3,25 +3,23 @@
 
 #include <vector>
 #include <utility>
-#include "pinconfig.hh"
+#include "Button.hh"
 
 class Controller
 {
 public:
     Controller();
     ~Controller();
-    
+
     void pollEvent();
 
+    void toggleOnOff(int keyCode);
     void changeVolume(int keyCode);
     void prevNext(int keyCode);
     void togglePlayback(int keyCode);
 
-  //Generic controller callback
-  typedef void (Controller::*callback_t)(int);
-
 private:
-    std::vector<std::pair<int, callback_t>> _buttons;
+    std::vector<Button> _buttons;
 };
 
 #endif /* !CONTROLLER_HH_ */

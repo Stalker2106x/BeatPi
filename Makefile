@@ -9,6 +9,7 @@ LIBS = -lwiringPi
 SRCDIR = src
 
 SRCS =	$(SRCDIR)/main.cpp		\
+	$(SRCDIR)/Button.cpp		\
 	$(SRCDIR)/Controller.cpp	
 
 OBJS = $(SRCS:.cpp=.o)
