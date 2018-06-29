@@ -10,7 +10,8 @@ SRCDIR = src
 
 SRCS =	$(SRCDIR)/main.cpp		\
 	$(SRCDIR)/Button.cpp		\
-	$(SRCDIR)/Controller.cpp	
+	$(SRCDIR)/Controller.cpp	\
+	$(SRCDIR)/Httpd.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
