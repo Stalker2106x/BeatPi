@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Ithirdparty -Iinclude
 
 TARGET = beatpi
 
-LIBS = -lwiringPi
+LIBS = -lwiringPi -lmicrohttpd
 
 SRCDIR = src
 
