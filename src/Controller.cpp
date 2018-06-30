@@ -5,6 +5,7 @@
 
 Controller::Controller()
 {
+  wiringPiSetup(); //Init GPIO
   _buttons.push_back(Button(ON_OFF, &Controller::toggleOnOff));
   _buttons.push_back(Button(FORWARD, &Controller::prevNext));
   _buttons.push_back(Button(PLAY_PAUSE, &Controller::togglePlayback));

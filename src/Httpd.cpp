@@ -1,34 +1,35 @@
 #include <fstream>
-#include <cstring>
+#include <iostream>
 #include "Httpd.hh"
 
 Httpd::Httpd()
 {
-    _daemon = MHD_start_daemon(MHD_USE_SELECT_INTERNALLY, PORT, NULL, NULL, &handleRequest, NULL, MHD_OPTION_END);
-    if (_daemon == NULL)
-    {
-        throw ("Could not start http daemon");
-    }
+  _daemon.set_base_dir("./http");
 }
 
 Httpd::~Httpd()
 {
-  MHD_stop_daemon(_daemon);
 }
 
-int Httpd::handleRequest(void *cls, struct MHD_Connection *connection,
-                      const char *url, const char *method,
-                      const char *version, const char *upload_data,
-                      size_t *upload_data_size, void **con_cls)
+void Httpd::runDaemon()
+{
+  Httpd server;
+
+  std::cout << "HTTP Server started.\n";
+  server.start();
+  std::cout << "END\n";
+}
+
+void Httpd::start()
+{
+  _daemon.listen("localhost", PORT, 0);
+}
+
+void Httpd::handleRequest(const httplib::Request &req, httplib::Response &res)
 {
     const char *page = readHtmlFile("index.htm");
-    struct MHD_Response *response;
-    int ret;
 
-    response = MHD_create_response_from_buffer (strlen(page), (void *) page, MHD_RESPMEM_PERSISTENT);
-    ret = MHD_queue_response (connection, MHD_HTTP_OK, response);
-    MHD_destroy_response (response);
-    return (ret);
+    res.set_content(page, "text/html");
 }
 
 char *Httpd::readHtmlFile(std::string filename)

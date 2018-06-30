@@ -1,7 +1,9 @@
 #ifndef HTTPD_HH_
 #define HTTPD_HH_
 
-#include "libmicrohttpd/src/include/microhttpd.h"
+#include <thread>
+#include <memory>
+#include "cpp-httplib/httplib.h"
 
 #define PORT 3000
 #define HTTP_PATH "./http/"
@@ -12,15 +14,15 @@ public:
     Httpd();
     ~Httpd();
 
-    static int handleRequest(void *cls, struct MHD_Connection *connection,
-                      const char *url, const char *method,
-                      const char *version, const char *upload_data,
-                      size_t *upload_data_size, void **con_cls);
-
+    void start();
+  
+    static void runDaemon();
+    static void handleRequest(const httplib::Request &req, httplib::Response &res);
     static char *readHtmlFile(std::string filename);
 
 private:
-    MHD_Daemon *_daemon;
+  std::thread _thread;
+  httplib::Server _daemon;
 };
 
 #endif /* !HTTPD_HH_ */
