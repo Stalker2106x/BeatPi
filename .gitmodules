@@ -1,6 +1,6 @@
 [submodule "thirdparty/wiringpi"]
 	path = thirdparty/wiringpi
 	url = git://git.drogon.net/wiringPi
-[submodule "thirdparty/libmicrohttpd"]
-	path = thirdparty/libmicrohttpd
-	url = https://github.com/ulion/libmicrohttpd.git
+[submodule "thirdparty/httplib"]
+	path = thirdparty/httplib
+	url = https://github.com/yhirose/cpp-httplib.git

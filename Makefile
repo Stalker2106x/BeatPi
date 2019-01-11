@@ -4,13 +4,14 @@ CXXFLAGS = -Wall -Ithirdparty -Iinclude
 
 TARGET = beatpi
 
-LIBS = -lwiringPi
+LIBS = -lwiringPi -lpthread
 
 SRCDIR = src
 
 SRCS =	$(SRCDIR)/main.cpp		\
 	$(SRCDIR)/Button.cpp		\
-	$(SRCDIR)/Controller.cpp	
+	$(SRCDIR)/Controller.cpp	\
+	$(SRCDIR)/Httpd.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
